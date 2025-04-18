@@ -8,9 +8,16 @@ spring:
       connection-timeout: 30000  # Adjust timeout if needed
       max-lifetime: 1800000
 
+# Hibernate dialect
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+
 jpa:
     properties:
       hibernate.dialect: org.hibernate.dialect.MySQL8Dialect
     hibernate:
       ddl-auto: update
     show-sql: true
+# JPA settings
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
