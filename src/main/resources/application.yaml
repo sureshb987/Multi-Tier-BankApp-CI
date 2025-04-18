@@ -4,11 +4,7 @@ spring:
     username: admin
     password: Test@123!
     driver-class-name: com.mysql.cj.jdbc.Driver
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-  datasource:
     hikari:
-      connection-timeout: 30000
-      maximum-pool-size: 10
+      connection-timeout: 30000  # Adjust timeout if needed
+      max-lifetime: 1800000
+
