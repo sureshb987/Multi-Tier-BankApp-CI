@@ -1,13 +1,28 @@
+#package com.example.bankapp;
+
+#import org.springframework.boot.SpringApplication;
+#import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+#@SpringBootApplication
+#public class BankappApplication {
+
+	#public static void main(String[] args) {
+	#	SpringApplication.run(BankappApplication.class, args);
+	#}
+#}
+
 package com.example.bankapp;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
-@SpringBootApplication
-public class BankappApplication {
+@SpringBootTest
+@ActiveProfiles("test")
+public class BankappApplicationTests {
 
-	public static void main(String[] args) {
-		SpringApplication.run(BankappApplication.class, args);
-	}
-
+    @Test
+    void contextLoads() {
+        // Test will fail if application context cannot start
+    }
 }
