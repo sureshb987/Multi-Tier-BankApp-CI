@@ -14,35 +14,22 @@ import org.testcontainers.containers.GenericContainer;
 @SpringBootTest
 public class BankappApplicationTests {
 
-    // Use Testcontainers for local development
     @Container
-    static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:15-alpine")
+    static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:15")
             .withDatabaseName("testdb")
             .withUsername("testuser")
             .withPassword("testpass");
 
     @DynamicPropertySource
-    static void configureProperties(DynamicPropertyRegistry registry) {
-        if (isRunningInCI()) {
-            // Use RDS in CI environment
-            registry.add("spring.datasource.url", 
-                () -> "jdbc:postgresql://corporateproject-postgres.cd0yoy806w7s.ap-south-1.rds.amazonaws.com:5432/corporateproject_db");
-            registry.add("spring.datasource.username", () -> "pgadmin");
-            registry.add("spring.datasource.password", () -> System.getenv("DB_PASSWORD")); // Get from environment
-        } else {
-            // Use Testcontainers for local development
-            registry.add("spring.datasource.url", postgres::getJdbcUrl);
-            registry.add("spring.datasource.username", postgres::getUsername);
-            registry.add("spring.datasource.password", postgres::getPassword);
-        }
-    }
-
-    private static boolean isRunningInCI() {
-        return System.getenv("CI") != null && System.getenv("CI").equals("true");
+    static void datasourceProperties(DynamicPropertyRegistry registry) {
+        registry.add("spring.datasource.url", postgres::getJdbcUrl);
+        registry.add("spring.datasource.username", postgres::getUsername);
+        registry.add("spring.datasource.password", postgres::getPassword);
     }
 
     @Test
     void contextLoads() {
-        // Test will automatically use the appropriate database
+        // Just verifies Spring context
     }
 }
+
