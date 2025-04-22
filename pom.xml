@@ -50,6 +50,23 @@
 			<groupId>org.thymeleaf.extras</groupId>
 			<artifactId>thymeleaf-extras-springsecurity6</artifactId>
 		</dependency>
+              
+    <!-- Testcontainers for JUnit 5 -->
+                <dependency>
+                       <groupId>org.testcontainers</groupId>
+                       <artifactId>testcontainers</artifactId>
+                       <version>1.17.6</version> <!-- Make sure to use the latest version -->
+                       <scope>test</scope>
+               </dependency>
+
+    <!-- Testcontainers JUnit Jupiter extension -->
+              <dependency>
+                     <groupId>org.testcontainers</groupId>
+                      <artifactId>testcontainers-junit-jupiter</artifactId>
+                      <version>1.17.6</version> <!-- Make sure to use the latest version -->
+                     <scope>test</scope>
+              </dependency>
+
 
 		<dependency>
 			<groupId>mysql</groupId>
